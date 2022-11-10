@@ -1,0 +1,67 @@
+Ejercicios que hacemos de entrada
+
+
+Conjetura de collats algoritmo de 3n + 1
+
+Un algoritmo en donde le pasamos un valor y en base a ese valor
+va empezar a aplicar criterios
+
+for (;;) {
+   si n es par ? se divide por 2
+   si n es impar se aplica la formula 3 * n + 1
+   se vuelve a iterar con el nuevo valor de n
+}
+
+Que dice esta conjetura. Que cualquier numero positivo termina en 1.
+Ahora bien, no solo termina en [1] sino que entra en un bucla infinito
+
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+que es que 3n + 1 es 4 que es par se reduce a 2 que es par se reduce a 1 
+
+
+--------------------------------------------------------------------------
+Numeros primos
+--------------------------------------------------------------------------
+
+El calculo de numeros primos se realiza de la siguiente forma.
+
+yo se que el 2 es primo entonces lo pongo en un array [2]
+
+intento con el 3 lo divido por cada item del array, [2] NO SE PUEDE ENTONCES ES PRIMO
+
+[2, 3]
+
+intento con el 4, es divisible por 2? si. NO ES PRIMO.
+
+intento con el 5, es divisible x 2 ? NO, x 3 ? NO. ES PRIMO
+
+[2, 3, 5]
+
+intento con el 6: es divisible por 2 ? si. NO ES PRIMO.
+
+intento con el 7. es divisible por 2 ? por 3 ? por 5 ?  "ES PRIMO"
+
+
+--------------------------------------------------------------------------
+Temas de repaso pendiente
+--------------------------------------------------------------------------
+
+Callback sincronico ? Sirve ? para que ?
+Callback asincronico. Es el que mas vamos a usar.
+
+Generar archivos de manera aleatoria.
+
+UTF-8 Que es el encoding ?
+
+
+
+
+
+
