@@ -10,7 +10,7 @@ let suma = (x, y, onFinish) => {
 }
 
 let sumaPromise = (x, y) => {
-    return new Promise(() => {
+    return new Promise((resolve, reject) => {
         suma(x, y, (total) => {
             resolve(total)
         })
