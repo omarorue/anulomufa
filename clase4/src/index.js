@@ -1,24 +1,4 @@
-/*
-tengo una funcion que suma 2 valores, simple
+// 1) Crear 100 archivos en la carpeta que tenemos configurada
+// 2) Utilizar alguna funcion para leer los archivos de esa misma carpeta
+// 3) mostrar los archivos por pantalla
 
-*/
-
-let suma = (x, y, onFinish) => {
-    setTimeout(() => {
-        onFinish(x + y)
-    }, 3000)
-}
-
-let sumaPromise = (x, y) => {
-    return new Promise((resolve, reject) => {
-        suma(x, y, (total) => {
-            resolve(total)
-        })
-    })
-}
-
-// Hacer las tres implementaciones 
-
-// Usando promise con la notacion then-cach
-
-// Usando promise con la notacion async await
