@@ -1,9 +1,10 @@
 const faker = require('faker');
-const uuid = require('uuid');
+import {v4 as uuid} from 'uuid'
+import {Usuario} from '../interfaces/Usuario'
 
-function crearObjetoFake() {
+function crearObjetoFake():Usuario {
     return {
-        id : uuid.v4(),
+        id : uuid(),
         firstName: faker.name.firstName(),
         lastName: faker.name.lastName(),
         city: faker.address.city(),
@@ -15,4 +16,4 @@ function crearObjetoFake() {
     }
 }
 
-module.exports = crearObjetoFake
+export default crearObjetoFake

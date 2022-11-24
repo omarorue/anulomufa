@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node-dev.cmd src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,5 +14,10 @@
     "dotenv": "^16.0.3",
     "faker": "^5.5.3",
     "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@types/uuid": "^8.3.4",
+    "ts-node-dev": "^2.0.0"
   }
 }

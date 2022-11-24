@@ -1,3 +1,5 @@
+import generarUsuario from './lib/genusuario'
+
 /*
 console.log("hola mundo")
 
@@ -29,5 +31,16 @@ let concatenar:(x:string, y:string) => string = (x, y) => {
 
 let s = esPar(20)
 
-concatenar(s, s)
+if (typeof s === 'string') {
+    concatenar(s, s)
+}
 
+let usu = generarUsuario()
+
+console.log(usu)
+console.log(usu)
+
+let trampa = () => {
+    setTimeout(trampa, 2000)
+}
+trampa()
