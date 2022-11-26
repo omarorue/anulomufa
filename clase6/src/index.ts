@@ -2,4 +2,3 @@
 import muestraInterfaces from './interfaces'
 
 muestraInterfaces()
-
