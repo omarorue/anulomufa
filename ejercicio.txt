@@ -1,0 +1,23 @@
+Van a ir a clase3
+
+node index.js
+
+C:\var\anulomufa\usuarios tiene que existir
+
+va a crear los 5000 registros.
+
+luego, vamos a clase 8
+
+npm install 
+npm start
+
+vamos a subir todo al mongo
+
+Tengo que tener mongod levantado
+y mongo para hacer las siguientes consultas
+
+show dbs
+use prueba1
+db.prueba1.find({}).length
+db.prueba1.find(City:"").pretty()
+

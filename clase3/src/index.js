@@ -5,7 +5,7 @@ let dotenv = require('dotenv')
 
 dotenv.config()
 
-asyncForLoop(1, (idx, fnNext) => {
+asyncForLoop(4999, (idx, fnNext) => {
     let usuario = genUsuario()
     let txtUsuario = JSON.stringify(usuario)
     let nombreArchivo = [process.env.PATH_TICKETS, usuario.id, '.json'].join('')

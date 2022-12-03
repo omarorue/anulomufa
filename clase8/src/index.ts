@@ -27,47 +27,18 @@ import fs from 'fs'
 import * as util from './lib/util'
 import dotEnv from 'dotenv'
 import {asyncForLoop} from './lib/asyncForLoop'
+import {insert} from './lib/clienteMongo'
 
 dotEnv.config()
 
-let leerDir = async () => {
-    return 
-}
-
-(async function() {
+;(async function() {
+    let pathTickets = util.checkStrDef(process.env.PATH_TICKETS)
     let files:Array<String> = await fs.promises.readdir(util.checkStrDef(process.env.PATH_TICKETS))
     for (let x of files) {
-        console.log(x)
+        let pathCompleto:String = [pathTickets, x].join('')
+        console.log(pathCompleto)
+        let contenido = await fs.promises.readFile(<string>pathCompleto, 'utf-8')
+        console.log(contenido)
+        await insert('anulomufa', 'prueba1', JSON.parse(contenido))
     }
 })()
-
-/*
-fs.promises.readdir(util.checkStrDef(process.env.PATH_TICKETS))
-.then((archivosDelFolder) => {
-    let cantArchivos:number = archivosDelFolder.length
-
-    asyncForLoop(cantArchivos, (idx, next, abort) => {
-        let nomArchivo:string = archivosDelFolder[idx]
-        let pathArchivo = [process.env.PATH_TICKETS, nomArchivo].join('')
-
-        fs.promises.readFile(pathArchivo)
-        .then(valor => { 
-            console.log(valor.toString('utf-8')) 
-            next()
-        })
-        .catch(e => {
-            abort(e)
-        })
-    }, e => {
-        console.log('termino con codigo de error: ' + e)
-    })    
-})
-.catch(e => {
-    if (e!) {
-        return
-    }
-    console.log('sale x catch')
-    console.log(e)
-})
-
-*/

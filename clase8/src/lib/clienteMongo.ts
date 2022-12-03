@@ -1,6 +1,6 @@
 import {Collection, MongoClient} from 'mongodb'
 
-const url = 'mongodb://localhost:27017'
+const url = 'mongodb://0.0.0.0:27017'
 
 export let insertCallBack = (base, coleccion, documento, callBackFn) => {
     let cliente:MongoClient

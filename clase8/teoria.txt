@@ -1,0 +1,44 @@
+Base de datos transaccional SQL (SQL Server, MySQL, DB2, Postgress)
+   Filas y Columnas eso es una tabla.
+   Cada tabla puede tener PrimaryKey es una Key que identifica
+   de manera univoca al registro.
+   y Foreing key que es una referencia a la PK de otra tabla.
+
+Integridad de datos. Si saco de un lado y pongo en otro. 
+Me aseguro que ambos movimientos son correctos no NO se realizan.
+
+Inicialmente, pensada para un solo server.
+
+
+Base de datos NOSQL.
+  Key value. Objeto['key1'] = {valor: 1, pedido: [{},{},{},{}]}
+  Redis
+
+  Orientada a documento: MongoDb, Couchbase, CouchDB
+
+  En vez de tener tablas (con filas columnas), va a tener documentos
+  con collections (tablas), documentos en vez de columnas
+  {valor: 1, pedido: [{},{},{},{}]}
+
+  Como darse cuenta si necesito poner una FK.
+
+  Ejemplo pedido: {id_pedido: 234234234234, 
+                   cliente: {
+                      nombre: '',
+                      apellido: '',
+                      domicilio: {
+                         calle: '',
+                         numerno: 1234
+                      }
+                   }
+                  }
+
+  dos collections
+   
+      pedidos {id_pedido: 234234234234,
+               cliente_id: '',
+               recorrido: [{x,y},{x,y},{x,y},{x,y},{x,y},{x,y},{x,y},{x,y},{x,y}]
+               orden_compra: {producto_id, precio, cantidad, etc}
+              } 
+           
+      clientes
