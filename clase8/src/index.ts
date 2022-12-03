@@ -27,7 +27,7 @@ import fs from 'fs'
 import * as util from './lib/util'
 import dotEnv from 'dotenv'
 import {asyncForLoop} from './lib/asyncForLoop'
-import {insert} from './lib/clienteMongo'
+import {insert, query} from './lib/clienteMongo'
 
 dotEnv.config()
 
@@ -41,4 +41,13 @@ dotEnv.config()
         console.log(contenido)
         await insert('anulomufa', 'prueba1', JSON.parse(contenido))
     }
+})
+
+
+;(async function() {
+    let result = await query('anulomufa', 'prueba1', {city:"Alecton"})
+    for (let x of result) {
+        console.log(JSON.stringify(x))
+    }
 })()
+

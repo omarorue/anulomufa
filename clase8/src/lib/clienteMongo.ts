@@ -42,3 +42,17 @@ export let insert = async (base, coleccion, documento) => {
         throw err
     }
 }
+
+export let query = async (base, coleccion, query) => {
+    try {
+        let cliente:MongoClient = await MongoClient.connect(url)
+        let db = cliente.db(base)
+        let collection = db.collection(coleccion)
+        let resultado = await collection.find(query, {projection: {_id:0}}).toArray()
+        await cliente.close()
+        return resultado
+    }
+    catch (err) {
+        throw err
+    }
+}
