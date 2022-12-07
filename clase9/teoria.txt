@@ -1,0 +1,77 @@
+HTTP Protocol
+
+Protocolo basado en texto plano.
+
+A ------------------------- B
+
+
+HTTP: Control de contenido HTML/CSS/JS/IMAGEN/VIDEO/JSON
+TCP: Protocolo de control de paquetes
+IP: Routers
+Mas capas abajo
+
+HTTP Request
+
+GET / HTTP/1.1
+Host: www.cronista.com
+User-Agent: Browser que uso
+Accept: */*
+[ENTER]
+------------------------------------
+
+HTTP Response
+
+HTTP/1.1 200 OK ------------------------------> El 200 es un codigo de error
+Date: Wed, 07 Dec 2022 23:19:08 GMT
+Content-Type: text/html
+Content-Length: 455737
+Connection: keep-alive
+Location: /espana/
+Set-Cookie: crnst-country=ar; Max-Age=1800; path=/
+ETag: "3175497219"
+Last-Modified: Wed, 07 Dec 2022 23:19:02 GMT
+Strict-Transport-Security: max-age=31536000
+Accept-Ranges: bytes
+Server: elb / Apache / nginx / express (express es el que usa nodejs)
+
+
+Verbos HTTP
+
+GET, POST, PUT, DELETE
+
+HTTP Responses
+
+200 Los 200 son para decir que funciono bien. 
+
+200 OK
+201 Recurso agregado
+204 No cambio el contenido
+
+300 Es para decir que algo cambio de ubicacion
+
+301 Redireccionar a otro sitio de forma permanente
+
+400 Son para informar que algo esta mal del lado del usuario
+
+400 Bad request
+401 Seguridad                Uno es para autenticacion, y el otro para authorization
+403 Seguridad
+404 Not Found
+405 Metodo no permitido
+
+500 Son para informar errores del servidor, ahi el cliente, no puede hacer nada.
+
+500 Internal server error
+
+
+El servidor HTTP, va a escuchar lo que se llama un port. cada port, es una aplicacion diferente.
+Convencionalmente, se usa 3000 pero recordar que es solo convencion.
+
+
+
+
+
+
+
+
+
