@@ -1,5 +1,6 @@
 import express, {Express} from 'express'
 import generarUsuario from './lib/genusuario'
+import {insert} from './lib/clienteMongo'
 
 let app:Express = express()
 app.use(express.json())
@@ -23,8 +24,11 @@ app.get('/inventarusuario', (request, response) => {
 // Ahora va a venir por post, en el body
 
 app.post('/usuario', (request, response) => {
-    console.log(request.body)
-    response.status(201).end()
+    console.log(typeof request.body)
+    let contenido = request.body
+    insert('anulomufa', 'prueba2', contenido)
+    .then(() => { response.status(201).end() })
+    .catch(() => { response.status(500).end() })    
 })
 
 app.get('/hola', (request, response) => {
