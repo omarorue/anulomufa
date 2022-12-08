@@ -68,6 +68,32 @@ El servidor HTTP, va a escuchar lo que se llama un port. cada port, es una aplic
 Convencionalmente, se usa 3000 pero recordar que es solo convencion.
 
 
+Api restfull
+
+
+GET http://apis.dominio.com.ar/recurso/idDelRecurso
+    
+    Ejemplo dame el cliente 1000
+
+GET http://apis.dominio.com.ar/recurso?nombre=Alibaba&apellido=Garcia
+
+    Dame el cliente con nombre=Alibaba y apellido=Garcia
+
+POST http://apis.dominio.com.ar/recurso
+
+    Este lleva ademas un Body que es aquello que
+    quiero postear
+
+PUT http://apis.dominio.com.ar/recurso/idDelRecurso
+
+    Este lleva ademas un Body que es aquello que
+    quiero modificar
+
+DELETE http://apis.dominio.com.ar/recurso/idDelRecurso
+
+
+
+
 
 
 

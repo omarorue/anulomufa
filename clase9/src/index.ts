@@ -17,4 +17,8 @@ app.get('/hola', (request, response) => {
     response.status(200).send(htmlRespuesta)
 })
 
+/**
+ * Ejercicio. Implementar delete y responder un texto solo funcione con delete
+ */
+
 app.listen(3000)
