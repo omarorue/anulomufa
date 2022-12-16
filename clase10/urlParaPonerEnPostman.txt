@@ -1,0 +1,1 @@
+localhost:3000/alumno?lastName=Bogan&city=Yonkers
