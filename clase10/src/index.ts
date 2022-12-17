@@ -1,13 +1,14 @@
 import express, {Express} from 'express'
 import generarUsuario from './lib/genusuario'
-import {insert, query} from './lib/clienteMongo'
+import {insert, query, update, deleteById} from './lib/clienteMongo'
 import crearObjetoFake from './lib/genusuario'
 
 
 let app:Express = express()
 app.use(express.json())
+app.use(express.static('public'))
 
-app.get('/', (request, response) => {
+app.get('/a', (request, response) => {
     response.setHeader('Content-Type', 'text/plain')
 
     let htmlRespuesta = '<h1>Header uno</h1>'
@@ -37,6 +38,10 @@ app.get('/alumno', (request, response) => {
         objQuery.lastName = 'Turner'
     }
 
+    if (request.query.city) {
+        objQuery.city = request.query.city;
+    }
+    
     // AGREGARLE city MISMA LOGICA
 
     query('anulomufa', 'alumno', objQuery)
@@ -78,26 +83,30 @@ app.put('/alumno/:id', (request, response) => {
     // si NO existe ? 404 NotFound
     // Si existe, reemplaza al existente con el objeto enviado
 
-    query('anulomufa', 'alumno', {id:request.params.id})
+    let id = request.params.id
+
+    console.log({id})
+
+    query('anulomufa', 'alumno', {id})
     .then(data => { 
         if (data.length === 0) {
             response.status(404).end()
             return
         }
-        // Modificar el existente con un update
-        // no esta hecho en el clientemongodb
-        response.status(200).end()
+        update('anulomufa', 'alumnos', id, request.body)
+        .then(() => response.status(200).end())
+        .catch(() => { response.status(500).end() })
     })
     .catch(err => response.status(500).end())
-
-    response.status(200).send()
 })
 
 app.delete('/alumno/:id', (request, response) => {
     response.setHeader('Content-Type', 'application/json')
 
-    // No esta hecho el el clientemongodb
-    response.status(200).send({ok:'ok'})
+    let id = request.params.id
+    deleteById('anulomufa', 'alumno', id)
+    .then(() => response.status(200).end())
+    .catch(() => { response.status(500).end() })
 })
 
 app.listen(3000)

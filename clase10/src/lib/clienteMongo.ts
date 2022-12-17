@@ -43,6 +43,36 @@ export let insert = async (base, coleccion, documento) => {
     }
 }
 
+export let update = async (base, coleccion, id:string, documento) => {
+    try {
+        let cliente:MongoClient = await MongoClient.connect(url)
+        let db = cliente.db(base)
+        let collection = db.collection(coleccion)
+        let metadata = await collection.updateOne({id}, documento)
+        console.log(documento)
+        console.log(metadata)
+        await cliente.close()
+    }
+    catch (err) {
+        console.log(err)
+        throw err
+    }
+}
+
+export let deleteById = async (base, coleccion, id:string) => {
+    try {
+        let cliente:MongoClient = await MongoClient.connect(url)
+        let db = cliente.db(base)
+        let collection = db.collection(coleccion)
+        let metadata = await collection.deleteOne({id})
+        console.log(metadata)
+        await cliente.close()
+    }
+    catch (err) {
+        throw err
+    }
+}
+
 export let query = async (base, coleccion, query) => {
     try {
         let cliente:MongoClient = await MongoClient.connect(url)
@@ -56,3 +86,4 @@ export let query = async (base, coleccion, query) => {
         throw err
     }
 }
+
