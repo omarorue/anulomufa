@@ -5,13 +5,10 @@ import {insert, query, update, deleteById} from '../lib/clienteMongo'
 let crudAlumno = Router();
 
 crudAlumno.route('/inventaralumno').get((request, response) => {
-    response.setHeader('Content-Type', 'application/json')
     response.status(200).send(generarUsuario())
 })
 
 crudAlumno.route('/alumno').get((request, response) => {
-    response.setHeader('Content-Type', 'application/json')
-
     console.log(request.query)
     let objQuery:any = {}
 
@@ -35,8 +32,6 @@ crudAlumno.route('/alumno').get((request, response) => {
 })
 
 crudAlumno.route('/alumno/:id').get((request, response) => {
-    response.setHeader('Content-Type', 'application/json')
-    
     query('anulomufa', 'alumno', {id:request.params.id})
     .then(data => { 
         if (data.length === 0) {
@@ -49,7 +44,6 @@ crudAlumno.route('/alumno/:id').get((request, response) => {
 })
 
 crudAlumno.route('/alumno/:id/:algomas').get((request, response) => {
-    response.setHeader('Content-Type', 'application/json')
     response.status(200).send({ahora:request.params.algomas})
 })
 
@@ -62,8 +56,6 @@ crudAlumno.route('/alumno').post((request, response) => {
 })
 
 crudAlumno.route('/alumno/:id').put((request, response) => {
-    response.setHeader('Content-Type', 'application/json')
-    
     // Tiene que buscar si existe ese id.
     // si NO existe ? 404 NotFound
     // Si existe, reemplaza al existente con el objeto enviado
@@ -86,8 +78,6 @@ crudAlumno.route('/alumno/:id').put((request, response) => {
 })
 
 crudAlumno.route('/alumno/:id').delete((request, response) => {
-    response.setHeader('Content-Type', 'application/json')
-
     let id = request.params.id
     deleteById('anulomufa', 'alumno', id)
     .then(() => response.status(200).end())
