@@ -14,8 +14,17 @@ app.use((request, response, next) => {
     console.log('Estoy en el middleware NUMERO I')
     response.setHeader('Content-Type', 'application/json')
     setTimeout(() => {
-        next(new Error('LO CARGO CON UN ERROR DE ENTRADA'))
+        next()
     }, 2)
+})
+
+app.use((request, reponse, next) => {
+    console.log('Este middleware es el encargado de verificar si viene token en el caso que sea necesario')
+    console.log(request.headers['x-token'])
+    next()
+    // Si va a login, no le puedo exigir un token
+    // Si va a !== login le tengo que pedir el token
+    // Con esto cumplo con la parte de autenticacion
 })
 
 app.use((request, response, next) => {

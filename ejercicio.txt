@@ -1,4 +1,4 @@
-Van a ir a clase3
+Van a ir a clase3,
 
 node index.js
 
