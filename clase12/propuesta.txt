@@ -1,0 +1,6 @@
+Hacer un login de usuario
+encriptar la password
+entender el concepto de Hash
+validar la password
+generar un token
+
