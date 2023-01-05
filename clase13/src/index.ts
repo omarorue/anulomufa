@@ -5,6 +5,8 @@ import crearObjetoFake from './lib/genusuario'
 import {Router} from 'express'
 import alumnoCrud from './routes/alumnoRoute'
 import usuarioCrud from './routes/usuarioRoute'
+import middlewareSeguridad from './middleware/middlewareSeguridad'
+
 
 let app:Express = express()
 app.use(express.json())
@@ -31,6 +33,8 @@ app.use((request, response, next) => {
     console.log('Estoy en el middleware NUMERO II')
     next();
 })
+
+app.use(middlewareSeguridad())
 
 app.use(alumnoCrud)
 app.use(usuarioCrud)

@@ -3,6 +3,7 @@ import generarUsuario from '../lib/genusuario'
 import {insert, query, update, deleteById} from '../lib/clienteMongo'
 import {v4 as uuid} from 'uuid'
 import sha256 from 'sha256'
+import { generarToken } from '../lib/jwtutils'
 
 let crudUsuario = Router();
 
@@ -95,8 +96,13 @@ crudUsuario.route('/login').post((request, response) => {
         console.log(reecriptacion)
 
         if (passwordEncriptada === reecriptacion) {
-            response.status(200).send({token:'FALTA ARMAR EL JWT'})
-            // Genero el token y se lo envio
+            let payload = {
+                sub: datum.id,
+                name: 'max',
+                role: 'ROLE_PORTERIA'
+            }
+            let token = generarToken(payload)
+            response.status(200).send({token})
             return
         }
 
