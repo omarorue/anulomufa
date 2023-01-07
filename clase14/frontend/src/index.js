@@ -5,7 +5,7 @@ import {doLongPolling, enviarMensaje} from './ajax'
 import {v4 as uuid} from 'uuid'
 */
 
-import {login} from './ajax'
+import {login, inventarUsuario} from './ajax'
 
 console.log("up n running");
 
@@ -17,8 +17,12 @@ document.addEventListener('click', e => {
     console.log(e.target.id)
     switch (e.target.id) {
         case 'btnLogin':
-            alert('se hizo click sobre el boton de login')
             login(resp => {
+                console.log(resp)
+            })
+            break;
+        case 'btnInventar':
+            inventarUsuario(resp => {
                 console.log(resp)
             })
             break;

@@ -18,6 +18,29 @@ export let login = (onFinish) => {
             return response.json();
         })
         .then(function(data) {
+            console.log('data = ', data);            
+            localStorage.setItem('jwt', data.token)
+            onFinish(data)
+        })
+        .catch(function(err) {
+            console.error(err);
+        });
+}
+
+export let inventarUsuario = (onFinish) => {
+    fetch('/inventarusuario', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'x-jwt': localStorage.getItem('jwt')
+        }
+        })
+        .then(function(response) {
+            console.log('response =', response);
+            return response.json();
+        })
+        .then(function(data) {
             console.log('data = ', data);
             onFinish(data)
         })
