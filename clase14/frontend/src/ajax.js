@@ -11,7 +11,7 @@ export let login = (onFinish) => {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin':'*'
         },
-        body: JSON.stringify({nombreUsu: "max", password : "max33redBull"})
+        body: JSON.stringify({nomUsuario: "max", password : "max33RedBull"})
         })
         .then(function(response) {
             console.log('response =', response);
