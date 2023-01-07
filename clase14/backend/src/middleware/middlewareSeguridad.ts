@@ -4,6 +4,7 @@ export default () => (request, response, next) => {
     console.log('ingresa al middleware de seguridad')
 
     if (request.url === '/login') {
+        console.log('entra x aca...')
         next()
         return
     }

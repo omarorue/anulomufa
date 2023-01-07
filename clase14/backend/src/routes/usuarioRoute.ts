@@ -32,13 +32,13 @@ crudUsuario.route('/usuario').get((request, response) => {
     
     // AGREGARLE city MISMA LOGICA
 
-    query('anulomufa', 'usuario', objQuery)
+    query('anulomufa', 'usuarios', objQuery)
     .then(data => response.status(200).send(data))
     .catch(err => response.status(500).end())
 })
 
 crudUsuario.route('/usuario/:id').get((request, response) => {
-    query('anulomufa', 'usuario', {id:request.params.id})
+    query('anulomufa', 'usuarios', {id:request.params.id})
     .then(data => { 
         if (data.length === 0) {
             response.status(404).end()
@@ -143,7 +143,7 @@ crudUsuario.route('/login').post((request, response) => {
 
     
     /*
-    insert('anulomufa', 'usuario', contenido)
+    insert('anulomufa', 'usuarios', contenido)
     .then(() => { response.status(201).end() })
     .catch(() => { response.status(500).end() })    
     */
@@ -158,7 +158,7 @@ crudUsuario.route('/usuario/:id').put((request, response, next) => {
 
     console.log({id})
 
-    query('anulomufa', 'usuario', {id})
+    query('anulomufa', 'usuarios', {id})
     .then(data => { 
         if (data.length === 0) {
             response.status(404).end()
@@ -178,7 +178,7 @@ crudUsuario.route('/usuario/:id').put((request, response, next) => {
 
 crudUsuario.route('/usuario/:id').delete((request, response) => {
     let id = request.params.id
-    deleteById('anulomufa', 'usuario', id)
+    deleteById('anulomufa', 'usuarios', id)
     .then(() => response.status(200).end())
     .catch(() => { response.status(500).end() })
 })
