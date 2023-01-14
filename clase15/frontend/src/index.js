@@ -5,7 +5,7 @@ import {doLongPolling, enviarMensaje} from './ajax'
 import {v4 as uuid} from 'uuid'
 */
 
-import {login, inventarUsuario, traerAlumnos, borrarAlumno} from './ajax'
+import {login, inventarUsuario, traerAlumnos, borrarAlumno, insertarAlumno} from './ajax'
 
 console.log("up n running");
 
@@ -59,23 +59,19 @@ let renderizarAlumnos = (arrAlu) => {
 }
 
 
-/*
-{
-    if (localStorage.getItem('chatId') === null) {
-        localStorage.setItem('chatId', uuid())
+
+let pasamanos = async () => {
+    try {
+        for (let i = 0; i < 50; i++) {
+            let alumno = await inventarUsuario()
+            let resp = await insertarAlumno(alumno)
+            console.log(resp)
+        }
+    }
+    catch (err) {
+        console.log(alumno)
     }
 }
 
-doLongPolling(localStorage.getItem('chatId'), (mensaje) => {
-    document.getElementById('mensajes').innerHTML = 
-    document.getElementById('mensajes').innerHTML + ['<div class="msgRecibido">RSP: ', mensaje, '<div />'].join('')
-})
+pasamanos()
 
-document.addEventListener('submit', e => {
-    e.preventDefault()
-    let texto = document.getElementById('textoEnviar').value
-    document.getElementById('mensajes').innerHTML = 
-    document.getElementById('mensajes').innerHTML + ['<div class="msgEnviado">', texto, '<div />'].join('')
-    enviarMensaje(texto, () => {})
-})
-*/

@@ -27,26 +27,17 @@ export let login = (onFinish) => {
         });
 }
 
-export let inventarUsuario = (onFinish) => {
-    fetch('/inventarusuario', {
+export let inventarUsuario = async (onFinish) => {
+    let resp = await fetch('/inventarusuario', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
             'Access-Control-Allow-Origin':'*',
             'x-jwt': localStorage.getItem('jwt')
-        }
-        })
-        .then(function(response) {
-            console.log('response =', response);
-            return response.json();
-        })
-        .then(function(data) {
-            console.log('data = ', data);
-            onFinish(data)
-        })
-        .catch(function(err) {
-            console.error(err);
-        });
+        }})
+
+    let respJson = await resp.json()
+    return respJson
 }
 
 export let traerAlumnos = (onFinish) => {
@@ -69,6 +60,20 @@ export let traerAlumnos = (onFinish) => {
         .catch(function(err) {
             console.error(err);
         });
+}
+
+export let insertarAlumno = async (objAlu) => {
+    let resp = await fetch('/alumno', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'x-jwt': localStorage.getItem('jwt')
+        },
+        body: JSON.stringify(objAlu)
+        })
+
+    console.log(resp)
 }
 
 export let borrarAlumno = (idAlu, onFinish) => {
