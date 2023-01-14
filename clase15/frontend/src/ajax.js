@@ -50,7 +50,7 @@ export let inventarUsuario = (onFinish) => {
 }
 
 export let traerAlumnos = (onFinish) => {
-    fetch('/alumnos', {
+    fetch('/alumno', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -70,3 +70,27 @@ export let traerAlumnos = (onFinish) => {
             console.error(err);
         });
 }
+
+export let borrarAlumno = (idAlu, onFinish) => {
+    let url = ['/alumno/', idAlu].join('')
+    fetch(url, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
+            'x-jwt': localStorage.getItem('jwt')
+        }
+        })
+        .then(function(response) {
+            console.log('response =', response);
+            if (response.status === 200) {
+                onFinish(null)
+                return
+            }
+            onFinish(new Error('NO SE PUDO BORRAR'))
+        })
+        .catch(function(err) {
+            onFinish(err);
+        });
+}
+

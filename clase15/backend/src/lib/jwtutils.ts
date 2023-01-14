@@ -6,7 +6,7 @@ let hora = () => Math.floor(new Date().getTime() / 1000);
 
 export let generarToken = (payload) => {
     payload.iat = hora()
-    let token = sign(payload, SECRET, {expiresIn: '1000s'})
+    let token = sign(payload, SECRET, {expiresIn: '100000s'})
     return token
 }
 

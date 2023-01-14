@@ -28,7 +28,7 @@
         </div>
         <div class="col-sm-6">
           <button id="btnLogin" type="button" class="btn btn-primary">Login</button>
-          <button id="btnInventar" type="button" class="btn btn-primary">Inventar</button>
+          <button id="btnInventar" type="button" class="btn btn-primary">Fetch</button>
         </div>
       </div>
       <div class="row">
@@ -52,7 +52,7 @@
         </tr>
       </thead>
       <tbody>
-         {{#usuarios}}
+         {{#alumnos}}
         <tr>
           <td scope="row">{{id}}</td>
           <td>{{firstName}}</td>
@@ -60,7 +60,7 @@
           <td>{{city}}</td>
           <td><button id="btnBorrar_{{id}}" data-idBorrar="{{id}}" type="button" class="btn btn-primary js-botonBorradoUsuario">BORRAR</button></td>
         </tr>
-         {{/usuarios}}
+         {{/alumnos}}
       </tbody>
     </table>
   </script>

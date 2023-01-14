@@ -5,7 +5,7 @@ import {doLongPolling, enviarMensaje} from './ajax'
 import {v4 as uuid} from 'uuid'
 */
 
-import {login, inventarUsuario, traerAlumnos} from './ajax'
+import {login, inventarUsuario, traerAlumnos, borrarAlumno} from './ajax'
 
 console.log("up n running");
 
@@ -14,8 +14,24 @@ console.log("up n running");
 document.addEventListener('click', e => {
     e.stopPropagation()
 
-    console.log(e.target.id)
-    alert(e.target.id)
+    let hasClass = e.target.classList.contains('js-botonBorradoUsuario');
+
+    if (hasClass) {
+        borrarAlumno(e.target.dataset.idborrar, (err) => {
+            if (err) {
+                alert(err)
+                return
+            }
+            alert('Borrado correctamente !!!')
+            traerAlumnos(xs => renderizarAlumnos(xs))
+        })
+    }
+
+
+    if (hasClass) {
+        return
+    }
+
     switch (e.target.id) {
         case 'btnLogin':
             login(resp => {
@@ -30,10 +46,17 @@ document.addEventListener('click', e => {
         case 'btnInventar':            
             traerAlumnos((resp) => {
                 console.log(resp)
+                renderizarAlumnos(resp)
             })
             break;
     }
 })
+
+let renderizarAlumnos = (arrAlu) => {
+    let tmpl = document.getElementById('templateTablaUsuarios').innerHTML
+    let cocinado = Mustache.render(tmpl, { alumnos: arrAlu})
+    document.getElementById('tablaUsuarios').innerHTML = cocinado
+}
 
 
 /*
