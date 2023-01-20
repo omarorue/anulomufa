@@ -1,0 +1,47 @@
+h1 {
+  color: white;
+  background-color: black;
+}
+
+.altura60 {
+  height: 60px;
+}
+
+.margen {
+  margin-left: 4px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#mensajes {
+  height: 500px;
+  width: 1000px;
+  border: solid 1px rgb(165, 163, 163);
+}
+
+#formulario {
+  margin-top: 10px;
+  gap: 10px;
+  flex-direction: column;
+}
+
+#textoEnviar, #idDestinatario {
+  width: 800px;
+  display: block;
+}
+
+input {
+  margin-top: 10px;
+}
+
+.msgRecibido {
+  color: black;
+}
+
+.msgEnviado {
+  color: #888
+}
