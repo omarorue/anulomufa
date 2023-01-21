@@ -6,39 +6,16 @@ import {Router} from 'express'
 import alumnoCrud from './routes/alumnoRoute'
 import usuarioCrud from './routes/usuarioRoute'
 import middlewareSeguridad from './middleware/middlewareSeguridad'
-
+import { longPolling } from './routes/longPollingRoute'
 
 let app:Express = express()
+
 app.use(express.json())
 app.use(express.static('public'))
 
-app.use((request, response, next) => {
-    console.log('Estoy en el middleware NUMERO I')
-    response.setHeader('Content-Type', 'application/json')
-    setTimeout(() => {
-        next()
-    }, 2)
-})
-
-app.use((request, reponse, next) => {
-    console.log('Este middleware es el encargado de verificar si viene token en el caso que sea necesario')
-    console.log(request.headers['x-token'])
-    next()
-    // Si va a login, no le puedo exigir un token
-    // Si va a !== login le tengo que pedir el token
-    // Con esto cumplo con la parte de autenticacion
-})
-
-app.use((request, response, next) => {
-    console.log('Estoy en el middleware NUMERO II')
-    next();
-})
-
-app.use(middlewareSeguridad())
-
 app.use(alumnoCrud)
 app.use(usuarioCrud)
-
+app.use(longPolling)
 
 app.use('/usuario', (err, request, response, next) => {
     console.log('Ingreso al middleware de manejo de erores **')
