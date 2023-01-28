@@ -1,0 +1,13 @@
+Leer con atencion el ejercicicio
+
+https://raw.githubusercontent.com/alumnos2020/sensordetransito/master/ejercicio.txt
+
+Van a existir actores/microservicios/proceso
+
+Vamos a trabajar con un broker profesional llamado Kafka
+
+https://kafka.apache.org/
+
+Es un broker de mensajería que sirve para miles/millones de mensajes
+Otra escala.
+

@@ -50,7 +50,7 @@ longPolling.route('/api/publish/:id').post((request, response) => {
 
     console.log(found)
 
-    response.status(404).send({message:`El mensaje para ${idDestino}, ha sido creado `})
+    response.status(200).send({message:`El mensaje para ${idDestino}, ha sido creado `})
 
     found.res.status(200).send({status: 'NEW_MESSAGE', data: mensaje})
 
