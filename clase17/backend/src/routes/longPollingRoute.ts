@@ -36,7 +36,8 @@ longPolling.route('/api/publish/:id').post((request, response) => {
     let idDestino = request.params.id
     let mensaje = request.body
 
-    console.log(request.body)
+    console.log(idDestino)
+    console.log(mensaje)
 
     let found = objSuscribers[idDestino]
 

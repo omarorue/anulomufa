@@ -45,3 +45,13 @@ input {
 .msgEnviado {
   color: #888
 }
+
+#txtMensajes {
+  border: solid 1px blue;
+  height: 500px;
+  width: 100%;
+}
+
+#txtNuevoMensje {
+  width: 70%;
+}

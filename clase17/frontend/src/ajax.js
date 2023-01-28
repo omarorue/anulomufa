@@ -1,4 +1,29 @@
+export let longPolling = async (onNewMessage) => {
+    // /api/suscribe/:id
+    let url = '/api/suscribe/' + localStorage.getItem('usuarioLogueado')
+    let resp = await fetch(url, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*'
+        }})
+
+    let respJson = await resp.json()
+    console.log(respJson)
+    if (respJson.status === 'TIME_OUT') {
+        longPolling(onNewMessage);
+        return
+    }
+    if (respJson.status === 'NEW_MESSAGE') {
+        let txtMessages = document.getElementById('txtMensajes').innerHTML
+        document.getElementById('txtMensajes').innerHTML = txtMessages + '\r\n' + respJson.data
+        longPolling(onNewMessage);
+        return
+    }
+}
+
 export let verificarSession = (onFinish) => {
+    
     // Lo que hay que hacer.
     // Sumar un endpoint que cumpla el objetivo de verificar que la session sigue viva
     // hacer fetch con get

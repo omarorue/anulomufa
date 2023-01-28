@@ -10,7 +10,8 @@ import { longPolling } from './routes/longPollingRoute'
 
 let app:Express = express()
 
-app.use(express.json())
+// app.use(express.json())
+app.use(express.text());
 app.use(express.static('public'))
 
 app.use(alumnoCrud)

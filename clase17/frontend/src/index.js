@@ -1,16 +1,16 @@
-/*
 import "./styles.css"
+
+/*
 import "./controllers"
 import {doLongPolling, enviarMensaje} from './ajax'
 import {v4 as uuid} from 'uuid'
 */
 
-import {login, inventarUsuario, traerAlumnos, borrarAlumno, insertarAlumno} from './ajax'
+import {longPolling} from './ajax'
 
-console.log("up n running");
+longPolling(() => {})
 
-
-
+/*
 document.addEventListener('click', e => {
     e.stopPropagation()
 
@@ -75,3 +75,4 @@ let pasamanos = async () => {
 
 pasamanos()
 
+*/
