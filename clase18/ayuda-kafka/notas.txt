@@ -21,7 +21,7 @@ kafka-topics.bat  --bootstrap-server 127.0.0.1:9092 --list
 
 crear/borrar los topicos
 
-kafka-topics.bat  --bootstrap-server 159.223.115.32:9092 --create --topic numeros
+kafka-topics.bat  --bootstrap-server 127.0.0.1:9092 --create --topic numeros
                                                          --delete
 
 kafka-console-consumer.bat --bootstrap-server 127.0.0.1:9092 --offset 180 --partition 0  --topic numeros
