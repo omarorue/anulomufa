@@ -1,6 +1,7 @@
 import log4js from "./lib/log4js";
 import {Kafka, Partitioners, TopicPartition} from 'kafkajs'
 import {push} from './colamemoria'
+import {evaluarSiCorrespondeMulta} from './logicaMultas'
 
 let logger = log4js.getLogger('kafkaconsumer')
 
@@ -13,7 +14,7 @@ const kafka = new Kafka({
 let doTime = t => new Promise((r) => { setTimeout(r, t); })
 
 async function consumer() {
-    const consumer = kafka.consumer({ groupId: 'unico-group-id' })
+    const consumer = kafka.consumer({ groupId: 'unico-group-id3' })
     await consumer.connect()
     await consumer.subscribe({ topic: 'data-transito', fromBeginning: true })
     await consumer.run({
@@ -26,11 +27,12 @@ async function consumer() {
                     topic,
                     partition
                 })
+                evaluarSiCorrespondeMulta(objRecieved)
                 let hb = heartbeat
                 let resume = pause()
                 console.log('Haciendo tiempo')
                 console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-                await doTime(10000)                
+                await doTime(5000)                
                 resume()
             }
             catch (err) {

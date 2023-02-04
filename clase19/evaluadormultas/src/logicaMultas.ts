@@ -43,3 +43,15 @@ export let initLogicaMultas = () => {
         .catch(err => logger.error(err))
     })
 }
+
+export let evaluarSiCorrespondeMulta = (objDatosClimaVehiculo) => {
+    console.log(objDatosClimaVehiculo)
+    let key = [objDatosClimaVehiculo.tipoClima, objDatosClimaVehiculo.datosVehiculo.tipoVehiculo].join('_')
+    console.log(key)
+    console.log(LIMITES[key])
+    console.log(objDatosClimaVehiculo.datosVehiculo.velocidadMedida)
+    console.log(objDatosClimaVehiculo.datosVehiculo.velocidadMedida > LIMITES[key] ? 'HAY TABLA' : 'NADA')
+    if (objDatosClimaVehiculo.datosVehiculo.velocidadMedida > LIMITES[key]) {
+        generarMulta(objDatosClimaVehiculo)
+    }
+}

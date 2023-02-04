@@ -14,7 +14,7 @@ export async function generarMulta(objPersist) {
     
     await producer.connect()
     await producer.send({
-        topic: 'datos-multas-qatar',
+        topic: 'data-multas',
         messages: [{ value: JSON.stringify(objPersist) }]
     })
     await producer.disconnect()
